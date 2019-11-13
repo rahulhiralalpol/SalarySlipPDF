@@ -156,7 +156,7 @@ rows.forEach(function(item, index) {
       255.877 + ypos
     );
 
-  // Insert Values from DB//
+  // !Insert Values from DB//
   // console.log("Id.: " + index + ", Sr: " + item["Sr."] + ", Date: " + item.Date + ", Amount: " + item.Amount;
 
   doc
