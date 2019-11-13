@@ -1,12 +1,12 @@
-///Import required libraries
+// Import required libraries
 var PDFDocument = require("pdfkit");
 var fs = require("fs");
 var SVGtoPDF = require("svg-to-pdfkit");
 var xlsx = require("xlsx");
 
-///Define workbook from which the data needs to be extracted and parse it to json
+// Define workbook from which the data needs to be extracted and parse it to json
 var workbook = xlsx.readFile(
-  "D:/Users/Maitri-Kaveesh/Desktop/From Office/PDF Test/Salary Slip Data - September-2019.xlsx"
+  "./Salary Slip Data - Structure.xlsx"
 );
 var sheet_name_list = workbook.SheetNames;
 var rows = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
@@ -29,7 +29,7 @@ var doc = new PDFDocument({
 });
 
 ///Write stream to output PDF
-doc.pipe(fs.createWriteStream("D:/Test.pdf"));
+doc.pipe(fs.createWriteStream("./Test.pdf"));
 
 ///Write data of each row to PDF document
 
@@ -74,20 +74,20 @@ rows.forEach(function(item, index) {
     .stroke();
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Black.ttf")
+    .font("./Roboto Fonts/Roboto-Black.ttf")
     .fontSize(12)
     .text("SALARY SLIP", 55.155, 47.232 + ypos);
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Light.ttf")
+    .font("./Roboto Fonts/Roboto-Light.ttf")
     .fontSize(12)
     .text("for the month of", 134.977, 47.208 + ypos);
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Bold.ttf")
+    .font("./Roboto Fonts/Roboto-Bold.ttf")
     .fontSize(12)
     .text(item.SAL_MONTH, 225.692, 47.232 + ypos); /// Month
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Light.ttf")
+    .font("./Roboto Fonts/Roboto-Light.ttf")
     .fontSize(10)
     .text("Employee Name", 55.678, 78.001 + ypos)
     .text(":", 131.722, 78.001 + ypos)
@@ -137,7 +137,7 @@ rows.forEach(function(item, index) {
     .text(":    ₹", 496.022, 225.972 + ypos);
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Regular.ttf")
+    .font("./Roboto Fonts/Roboto-Regular.ttf")
     .fontSize(10)
     .text("GROSS SALARY", 55.678, 241.024 + ypos)
     .text(":    ₹", 170.659, 241.024 + ypos)
@@ -145,12 +145,12 @@ rows.forEach(function(item, index) {
     .text(":    ₹", 496.022, 241.024 + ypos);
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Bold.ttf")
+    .font("./Roboto Fonts/Roboto-Bold.ttf")
     .fontSize(10)
     .text("NET SALARY", 262, 223.5 + ypos, { width: 86, align: "center" });
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Light.ttf")
+    .font("./Roboto Fonts/Roboto-Light.ttf")
     .fontSize(8)
     .text(
       "This is a computer generated Salary Slip and does not require a Signature.",
@@ -162,12 +162,12 @@ rows.forEach(function(item, index) {
   ///console.log("Id.: " + index + ", Sr: " + item["Sr."] + ", Date: " + item.Date + ", Amount: " + item.Amount;
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Medium.ttf")
+    .font("./Roboto Fonts/Roboto-Medium.ttf")
     .fontSize(12)
     .text(item.EMP_NAME, 139.5, 77.001 + ypos, { width: 241, align: "left" }); ///Employee Name
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Regular.ttf")
+    .font("./Roboto Fonts/Roboto-Regular.ttf")
     .fontSize(10)
     .text(item.ESIC_NUMBER, 465.5, 78.001 + ypos, {
       width: 96.8,
@@ -247,7 +247,7 @@ rows.forEach(function(item, index) {
     }); /// Other Deductions
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Bold.ttf")
+    .font("./Roboto Fonts/Roboto-Bold.ttf")
     .fontSize(10)
     .text(numberWithCommas(item.TOTAL_EARNINGS), 194, 241.024 + ypos, {
       width: 52,
@@ -259,7 +259,7 @@ rows.forEach(function(item, index) {
     }); /// Total Deductions
 
   doc
-    .font("C:/Users/Maitri-Kaveesh/Desktop/Roboto Fonts/Roboto-Black.ttf")
+    .font("./Roboto Fonts/Roboto-Black.ttf")
     .fontSize(16)
     .text("₹ " + numberWithCommas(item.NET_PAYMENT), 262, 235.609 + ypos, {
       width: 86,
