@@ -5,9 +5,7 @@ var SVGtoPDF = require("svg-to-pdfkit");
 var xlsx = require("xlsx");
 
 // Define workbook from which the data needs to be extracted and parse it to json
-var workbook = xlsx.readFile(
-  "./Salary Slip Data - Structure.xlsx"
-);
+var workbook = xlsx.readFile("./Salary Slip Data - Structure.xlsx");
 var sheet_name_list = workbook.SheetNames;
 var rows = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 
