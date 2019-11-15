@@ -162,7 +162,11 @@ rows.forEach(function(item, index) {
   doc
     .font("./Roboto Fonts/Roboto-Medium.ttf")
     .fontSize(12)
-    .text(item.EMP_NAME, 139.5, 77.001 + ypos, { width: 241, align: "left" }); // Employee Name
+    .text(item.EMP_NAME, 139.5, 77.001 + ypos, {
+      width: 241,
+      height: 20,
+      align: "left"
+    }); // Employee Name
 
   doc
     .font("./Roboto Fonts/Roboto-Regular.ttf")
