@@ -5,6 +5,8 @@ var SVGtoPDF = require("svg-to-pdfkit");
 var xlsx = require("xlsx");
 
 // Define workbook from which the data needs to be extracted and parse it to json
+
+var outputfile;
 var workbook = xlsx.readFile("./Salary Slip Data - Structure.xlsx");
 var sheet_name_list = workbook.SheetNames;
 var rows = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
@@ -26,15 +28,13 @@ var doc = new PDFDocument({
   }
 });
 
-// Write stream to output PDF
-doc.pipe(fs.createWriteStream("./Test.pdf"));
-
 // Write data of each row to PDF document
 
 var ypos = 0;
 
 rows.forEach(function(item, index) {
   ypos = (index % 3) * 269.3;
+  outputfile = "./Salary Slip - " + item.SAL_MONTH + ".pdf";
 
   SVGtoPDF(doc, svgfile, 391.465, 37.751 + ypos);
   SVGtoPDF(doc, vertsvg, 35.501, 131.563 + ypos);
@@ -287,6 +287,9 @@ doc
   .lineTo(571.2, 16.8 + ypos + 269.3)
   .lineWidth(0.2)
   .stroke();
+
+// Write stream to output PDF
+doc.pipe(fs.createWriteStream(outputfile.toString()));
 
 doc.end();
 

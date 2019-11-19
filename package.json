@@ -12,6 +12,7 @@
   "dependencies": {
     "pdfkit": "^0.10.0",
     "svg-to-pdfkit": "^0.1.7",
+    "win-select-file": "^1.0.0",
     "xlso": "^1.0.3",
     "xlsx": "^0.15.1"
   },
